@@ -1,0 +1,121 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         
+    2 00000000         
+    3 00000000         
+    4 00000000                 AREA             mycode,CODE,READONLY
+    5 00000000                 ENTRY
+    6 00000000                 EXPORT           __main
+    7 00000000         __main
+    8 00000000         
+    9 00000000 480A            LDR              R0,=data
+   10 00000002 F04F 010A       MOV              R1,#10
+   11 00000006 F990 2000       LDRSB            R2,[R0]
+   12 0000000A F100 0001       ADD              R0,R0,#1
+   13 0000000E         
+   14 0000000E         
+   15 0000000E F990 3000 
+                       BEGIN   LDRSB            R3,[R0]
+   16 00000012 4293            CMP              R3,R2
+   17 00000014 DA00            BGE              NEXT
+   18 00000016 461A            MOV              R2,R3
+   19 00000018         
+   20 00000018 F100 0001 
+                       NEXT    ADD              R0,R0,#1
+   21 0000001C 1E49            SUBS             R1,R1,#1
+   22 0000001E D1F6            BNE              BEGIN
+   23 00000020         
+   24 00000020 E7FE    STOP    B                STOP
+   25 00000022         
+   26 00000022         
+   27 00000022 F3 18 38 
+              0C F2 E9 
+              0E 18 E9 data    DCB              -13,+24,+56,+12,-14,-23,+14,+24
+,-23
+   28 0000002B         
+   29 0000002B 00 00000000     AREA             mydata,DATA,READONLY
+   30 00000000         
+   31 00000000         
+   32 00000000                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
+erwork --depend=.\objects\main.d -o.\objects\main.o -I.\RTE\_Target_1 -IC:\Keil
+_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include -IC:\Keil_v5\ARM\PACK\Keil\STM3
+2F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include --predefine="__EVAL 
+SETA 1" --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 526
+" --predefine="_RTE_ SETA 1" --predefine="STM32F401xC SETA 1" --list=.\listings
+\main.lst main.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+BEGIN 0000000E
+
+Symbol: BEGIN
+   Definitions
+      At line 15 in file main.s
+   Uses
+      At line 22 in file main.s
+Comment: BEGIN used once
+NEXT 00000018
+
+Symbol: NEXT
+   Definitions
+      At line 20 in file main.s
+   Uses
+      At line 17 in file main.s
+Comment: NEXT used once
+STOP 00000020
+
+Symbol: STOP
+   Definitions
+      At line 24 in file main.s
+   Uses
+      At line 24 in file main.s
+Comment: STOP used once
+__main 00000000
+
+Symbol: __main
+   Definitions
+      At line 7 in file main.s
+   Uses
+      At line 6 in file main.s
+Comment: __main used once
+data 00000022
+
+Symbol: data
+   Definitions
+      At line 27 in file main.s
+   Uses
+      At line 9 in file main.s
+Comment: data used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 4 in file main.s
+   Uses
+      None
+Comment: mycode unused
+6 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+mydata 00000000
+
+Symbol: mydata
+   Definitions
+      At line 29 in file main.s
+   Uses
+      None
+Comment: mydata unused
+1 symbol
+345 symbols in table

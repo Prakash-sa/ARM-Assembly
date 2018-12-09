@@ -1,0 +1,26 @@
+;P=O+R+S
+;O=2,R=6,S=9
+
+		AREA data,DATA,READONLY
+
+P		SPACE 4
+O		DCD 2
+R		DCD 6
+S		DCD 9
+	
+		AREA code,CODE,READONLY
+		ENTRY
+		EXPORT __main
+			
+__main
+		LDR R0,P
+		LDR R1,O
+		LDR R2,R
+		ADD R1,R1,R2
+		LDR R2,S
+		ADD R0,R1,R2
+STOP	B STOP
+
+		END
+
+

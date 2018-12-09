@@ -1,0 +1,146 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000 20000000 
+                       RAM1_ADD
+                               EQU              0x20000000
+    2 00000000 20001000 
+                       RAM2_ADD
+                               EQU              0x20001000
+    3 00000000         
+    4 00000000                 AREA             code,CODE,READONLY
+    5 00000000                 ENTRY
+    6 00000000                 EXPORT           __main
+    7 00000000         __main
+    8 00000000         
+    9 00000000 F000 F803       BL               FILL
+   10 00000004 F000 F80C       BL               COPY
+   11 00000008         
+   12 00000008 E7FE    STOP    B                STOP
+   13 0000000A         
+   14 0000000A         FILL
+   15 0000000A F04F 5000       LDR              R0,=RAM1_ADD
+   16 0000000E 490B            LDR              R1,=0xDEADBEEF
+   17 00000010 F04F 020A       MOV              R2,#10
+   18 00000014         
+   19 00000014 6001    L1      STR              R1,[R0]
+   20 00000016 F100 0004       ADD              R0,R0,#4
+   21 0000001A 1E52            SUBS             R2,R2,#1
+   22 0000001C D1FA            BNE              L1
+   23 0000001E 4770            BX               LR
+   24 00000020         
+   25 00000020         COPY
+   26 00000020 F04F 5000       LDR              R0,=RAM1_ADD
+   27 00000024 4906            LDR              R1,=RAM2_ADD
+   28 00000026 F04F 020A       MOV              R2,#10
+   29 0000002A         
+   30 0000002A 6803    L2      LDR              R3,[R0]
+   31 0000002C 600B            STR              R3,[R1]
+   32 0000002E F100 0004       ADD              R0,R0,#4
+   33 00000032 F101 0104       ADD              R1,R1,#4
+   34 00000036 1E52            SUBS             R2,R2,#1
+   35 00000038 D1F7            BNE              L2
+   36 0000003A 4770            BX               LR
+   37 0000003C         
+   38 0000003C         
+   39 0000003C                 END
+              DEADBEEF 
+              20001000 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
+erwork --depend=.\objects\main.d -o.\objects\main.o -I.\RTE\_Target_1 -IC:\Keil
+_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include -IC:\Keil_v5\ARM\PACK\Keil\STM3
+2F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include --predefine="__EVAL 
+SETA 1" --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 526
+" --predefine="_RTE_ SETA 1" --predefine="STM32F401xC SETA 1" --list=.\listings
+\main.lst main.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+COPY 00000020
+
+Symbol: COPY
+   Definitions
+      At line 25 in file main.s
+   Uses
+      At line 10 in file main.s
+Comment: COPY used once
+FILL 0000000A
+
+Symbol: FILL
+   Definitions
+      At line 14 in file main.s
+   Uses
+      At line 9 in file main.s
+Comment: FILL used once
+L1 00000014
+
+Symbol: L1
+   Definitions
+      At line 19 in file main.s
+   Uses
+      At line 22 in file main.s
+Comment: L1 used once
+L2 0000002A
+
+Symbol: L2
+   Definitions
+      At line 30 in file main.s
+   Uses
+      At line 35 in file main.s
+Comment: L2 used once
+STOP 00000008
+
+Symbol: STOP
+   Definitions
+      At line 12 in file main.s
+   Uses
+      At line 12 in file main.s
+Comment: STOP used once
+__main 00000000
+
+Symbol: __main
+   Definitions
+      At line 7 in file main.s
+   Uses
+      At line 6 in file main.s
+Comment: __main used once
+code 00000000
+
+Symbol: code
+   Definitions
+      At line 4 in file main.s
+   Uses
+      None
+Comment: code unused
+7 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+RAM1_ADD 20000000
+
+Symbol: RAM1_ADD
+   Definitions
+      At line 1 in file main.s
+   Uses
+      At line 15 in file main.s
+      At line 26 in file main.s
+
+RAM2_ADD 20001000
+
+Symbol: RAM2_ADD
+   Definitions
+      At line 2 in file main.s
+   Uses
+      At line 27 in file main.s
+Comment: RAM2_ADD used once
+2 symbols
+347 symbols in table

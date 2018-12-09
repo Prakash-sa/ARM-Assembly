@@ -1,0 +1,73 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             mycode,CODE,READONLY
+    2 00000000                 ENTRY
+    3 00000000                 EXPORT           __main
+    4 00000000         __main
+    5 00000000         
+    6 00000000 F04F 0006       MOV              R0,#6
+    7 00000004 2801    FACT    CMP              R0,#1
+    8 00000006 D909            BLS              DONE
+    9 00000008 B501            PUSH             {R0,LR}
+   10 0000000A F1A0 0001       SUB              R0,R0,#1
+   11 0000000E F7FF FFF9       BL               FACT
+   12 00000012 E8BD 4002       POP              {R1,LR}
+   13 00000016 FB01 F000       MUL              R0,R1,R0
+   14 0000001A 4770            BX               LR
+   15 0000001C         
+   16 0000001C F04F 0001 
+                       DONE    MOV              R0,#1
+   17 00000020 4770            BX               LR
+   18 00000022 00 00           ALIGN
+   19 00000024                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
+erwork --depend=.\objects\main.d -o.\objects\main.o -I.\RTE\_Target_1 -IC:\Keil
+_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include -IC:\Keil_v5\ARM\PACK\Keil\STM3
+2F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include --predefine="__EVAL 
+SETA 1" --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 526
+" --predefine="_RTE_ SETA 1" --predefine="STM32F401xC SETA 1" --list=.\listings
+\main.lst main.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+DONE 0000001C
+
+Symbol: DONE
+   Definitions
+      At line 16 in file main.s
+   Uses
+      At line 8 in file main.s
+Comment: DONE used once
+FACT 00000004
+
+Symbol: FACT
+   Definitions
+      At line 7 in file main.s
+   Uses
+      At line 11 in file main.s
+Comment: FACT used once
+__main 00000000
+
+Symbol: __main
+   Definitions
+      At line 4 in file main.s
+   Uses
+      At line 3 in file main.s
+Comment: __main used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 1 in file main.s
+   Uses
+      None
+Comment: mycode unused
+4 symbols
+340 symbols in table

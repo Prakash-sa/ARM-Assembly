@@ -1,0 +1,20 @@
+  
+  
+  
+		AREA  mycode,CODE,READONLY
+		ENTRY
+		EXPORT __main
+			
+__main
+
+		MOV R0,#205
+		MOV R2,#6
+		MOV R1,#0
+AGAIN   CMP R0,R2
+		BLO STOP
+		SUBS R0,R0,R2
+		ADD R1,R1,#1
+		B AGAIN
+		
+STOP	B STOP
+		END

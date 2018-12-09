@@ -1,0 +1,30 @@
+
+
+NUM		EQU 10
+COUNT	RN R0	
+DA		RN R1
+
+	
+		AREA mycode,CODE,READONLY
+		ENTRY
+		EXPORT __main
+__main
+		MOV COUNT,#NUM
+		LDR DA,=data
+		MOV R2,#0
+
+L		LDRSB R1,[DA]
+		ADD   R2,R1,R2
+		ADD DA,DA,#1
+		SUBS COUNT,COUNT,#1
+		BNE L
+		
+STOP 	B STOP
+
+
+		AREA mydata,DATA,READWRITE
+		
+data 	DCB -12,15,-28,+18,-33,+16,+12,+15,-21
+	    ALIGN
+			
+		END

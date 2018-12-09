@@ -1,0 +1,65 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         
+    2 00000000                 AREA             code,CODE,READONLY
+    3 00000000                 ENTRY
+    4 00000000                 EXPORT           __main
+    5 00000000         __main
+    6 00000000 4803            LDR              R0,=0xDEADBEEF
+    7 00000002 4904            LDR              R1,=0x23145612
+    8 00000004 4A04            LDR              R2,=0xBEEF1523
+    9 00000006 4B05            LDR              R3,=0x12245623
+   10 00000008         
+   11 00000008 B50F            STMDB            SP!,{R0-R3,LR}
+   12 0000000A BD0F            LDMIA            SP!,{R0-R3,PC}
+   13 0000000C         
+   14 0000000C E7FE    STOP    B                STOP
+   15 0000000E         
+   16 0000000E                 END
+              00 00 DEADBEEF 
+              23145612 
+              BEEF1523 
+              12245623 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
+erwork --depend=.\objects\main.d -o.\objects\main.o -I.\RTE\_Target_1 -IC:\Keil
+_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include -IC:\Keil_v5\ARM\PACK\Keil\STM3
+2F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include --predefine="__EVAL 
+SETA 1" --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 526
+" --predefine="_RTE_ SETA 1" --predefine="STM32F401xC SETA 1" --list=.\listings
+\main.lst main.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+STOP 0000000C
+
+Symbol: STOP
+   Definitions
+      At line 14 in file main.s
+   Uses
+      At line 14 in file main.s
+Comment: STOP used once
+__main 00000000
+
+Symbol: __main
+   Definitions
+      At line 5 in file main.s
+   Uses
+      At line 4 in file main.s
+Comment: __main used once
+code 00000000
+
+Symbol: code
+   Definitions
+      At line 2 in file main.s
+   Uses
+      None
+Comment: code unused
+3 symbols
+341 symbols in table

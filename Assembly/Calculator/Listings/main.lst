@@ -1,0 +1,211 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000 00000004 
+                       CHOICE  EQU              4
+    2 00000000 00000001 
+                       ADDIT   EQU              1
+    3 00000000 00000002 
+                       SUBTR   EQU              2
+    4 00000000 00000003 
+                       MULTI   EQU              3
+    5 00000000 00000004 
+                       DIVI    EQU              4
+    6 00000000 00000006 
+                       NUM1    EQU              6
+    7 00000000 00000002 
+                       NUM2    EQU              2
+    8 00000000         
+    9 00000000                 AREA             mycode,CODE,READONLY
+   10 00000000                 ENTRY
+   11 00000000                 EXPORT           __main
+   12 00000000         __main
+   13 00000000 F04F 0004       MOV              R0,#CHOICE
+   14 00000004 F04F 0106       MOV              R1,#NUM1
+   15 00000008 F04F 0202       MOV              R2,#NUM2
+   16 0000000C         
+   17 0000000C 2801            CMP              R0,#ADDIT
+   18 0000000E D005            BEQ              ADDITION
+   19 00000010         
+   20 00000010 2802            CMP              R0,#SUBTR
+   21 00000012 D005            BEQ              SUBTRACTION
+   22 00000014         
+   23 00000014 2803            CMP              R0,#MULTI
+   24 00000016 D006            BEQ              MULTIPLICATION
+   25 00000018         
+   26 00000018 2804            CMP              R0,#DIVI
+   27 0000001A D007            BEQ              DIVISION
+   28 0000001C         
+   29 0000001C         
+   30 0000001C         ADDITION
+   31 0000001C 440A            ADD              R2,R1,R2
+   32 0000001E E008            B                STOP
+   33 00000020         
+   34 00000020         
+   35 00000020         SUBTRACTION
+   36 00000020 EBA1 0202       SUB              R2,R1,R2
+   37 00000024 E005            B                STOP
+   38 00000026         
+   39 00000026         MULTIPLICATION
+   40 00000026 FB01 F202       MUL              R2,R1,R2
+   41 0000002A E002            B                STOP
+   42 0000002C         
+   43 0000002C         DIVISION
+   44 0000002C FBB1 F2F2       UDIV             R2,R1,R2
+   45 00000030 E7FF            B                STOP
+   46 00000032         
+   47 00000032 E7FE    STOP    B                STOP
+   48 00000034                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
+erwork --depend=.\objects\main.d -o.\objects\main.o -I.\RTE\_Target_1 -IC:\Keil
+_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include -IC:\Keil_v5\ARM\PACK\Keil\STM3
+2F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include --predefine="__EVAL 
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+SETA 1" --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 526
+" --predefine="_RTE_ SETA 1" --predefine="STM32F401xC SETA 1" --list=.\listings
+\main.lst main.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ADDITION 0000001C
+
+Symbol: ADDITION
+   Definitions
+      At line 30 in file main.s
+   Uses
+      At line 18 in file main.s
+Comment: ADDITION used once
+DIVISION 0000002C
+
+Symbol: DIVISION
+   Definitions
+      At line 43 in file main.s
+   Uses
+      At line 27 in file main.s
+Comment: DIVISION used once
+MULTIPLICATION 00000026
+
+Symbol: MULTIPLICATION
+   Definitions
+      At line 39 in file main.s
+   Uses
+      At line 24 in file main.s
+Comment: MULTIPLICATION used once
+STOP 00000032
+
+Symbol: STOP
+   Definitions
+      At line 47 in file main.s
+   Uses
+      At line 32 in file main.s
+      At line 37 in file main.s
+      At line 41 in file main.s
+      At line 45 in file main.s
+      At line 47 in file main.s
+
+SUBTRACTION 00000020
+
+Symbol: SUBTRACTION
+   Definitions
+      At line 35 in file main.s
+   Uses
+      At line 21 in file main.s
+Comment: SUBTRACTION used once
+__main 00000000
+
+Symbol: __main
+   Definitions
+      At line 12 in file main.s
+   Uses
+      At line 11 in file main.s
+Comment: __main used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 9 in file main.s
+   Uses
+      None
+
+
+
+ARM Macro Assembler    Page 2 Alphabetic symbol ordering
+Relocatable symbols
+
+Comment: mycode unused
+7 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+ADDIT 00000001
+
+Symbol: ADDIT
+   Definitions
+      At line 2 in file main.s
+   Uses
+      At line 17 in file main.s
+Comment: ADDIT used once
+CHOICE 00000004
+
+Symbol: CHOICE
+   Definitions
+      At line 1 in file main.s
+   Uses
+      At line 13 in file main.s
+Comment: CHOICE used once
+DIVI 00000004
+
+Symbol: DIVI
+   Definitions
+      At line 5 in file main.s
+   Uses
+      At line 26 in file main.s
+Comment: DIVI used once
+MULTI 00000003
+
+Symbol: MULTI
+   Definitions
+      At line 4 in file main.s
+   Uses
+      At line 23 in file main.s
+Comment: MULTI used once
+NUM1 00000006
+
+Symbol: NUM1
+   Definitions
+      At line 6 in file main.s
+   Uses
+      At line 14 in file main.s
+Comment: NUM1 used once
+NUM2 00000002
+
+Symbol: NUM2
+   Definitions
+      At line 7 in file main.s
+   Uses
+      At line 15 in file main.s
+Comment: NUM2 used once
+SUBTR 00000002
+
+Symbol: SUBTR
+   Definitions
+      At line 3 in file main.s
+   Uses
+      At line 20 in file main.s
+Comment: SUBTR used once
+7 symbols
+350 symbols in table

@@ -1,0 +1,80 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         
+    2 00000000                 AREA             mycode,CODE,READONLY
+    3 00000000                 ENTRY
+    4 00000000                 EXPORT           __main
+    5 00000000         __main
+    6 00000000         
+    7 00000000 480C            LDR              R0,=0xE000ED88
+    8 00000002 6801            LDR              R1,[R0]
+    9 00000004 F441 0170       ORR              R1,R1,#(0xF<<20)
+   10 00000008 6001            STR              R1,[R0]
+   11 0000000A F20F 0214 
+              F102 0200        ADRL             R2,TABLE
+   12 00000012         
+   13 00000012 ED92 0A02       VLDR.F32         S0,[R2,#8]
+   14 00000016 EDD2 0A03       VLDR.F32         S1,[R2,#12]
+   15 0000001A EE20 1A80       VMUL.F32         S2,S1,S0
+   16 0000001E         
+   17 0000001E E7FE    STOP    B                STOP
+   18 00000020         
+   19 00000020 00003265 
+                       TABLE   DCD              0x00003265
+   20 00000024 0154FAB2        DCD              0x0154FAB2
+   21 00000028 23514552        DCD              0x23514552
+   22 0000002C 2CBAD256        DCD              0x2CBAD256
+   23 00000030 BAD4512B        DCD              0xBAD4512B
+   24 00000034         
+   25 00000034                 END
+              E000ED88 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
+erwork --depend=.\objects\main.d -o.\objects\main.o -I.\RTE\_Target_1 -IC:\Keil
+_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include -IC:\Keil_v5\ARM\PACK\Keil\STM3
+2F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include --predefine="__EVAL 
+SETA 1" --predefine="__UVISION_VERSION SETA 526" --predefine="_RTE_ SETA 1" --p
+redefine="STM32F401xC SETA 1" --list=.\listings\main.lst main.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+STOP 0000001E
+
+Symbol: STOP
+   Definitions
+      At line 17 in file main.s
+   Uses
+      At line 17 in file main.s
+Comment: STOP used once
+TABLE 00000020
+
+Symbol: TABLE
+   Definitions
+      At line 19 in file main.s
+   Uses
+      At line 11 in file main.s
+Comment: TABLE used once
+__main 00000000
+
+Symbol: __main
+   Definitions
+      At line 5 in file main.s
+   Uses
+      At line 4 in file main.s
+Comment: __main used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 2 in file main.s
+   Uses
+      None
+Comment: mycode unused
+4 symbols
+341 symbols in table

@@ -1,0 +1,19 @@
+		AREA mycode,CODE,READONLY
+		ENTRY
+		EXPORT __main
+__main
+
+		MOV R0,#6
+FACT    CMP R0,#1
+		BLS DONE
+		PUSH {R0,LR}
+		SUB R0,R0,#1
+		BL FACT
+		POP {R1,LR}
+		MUL R0,R1,R0
+		BX LR
+		
+DONE	MOV R0,#1
+		BX LR
+		ALIGN
+		END

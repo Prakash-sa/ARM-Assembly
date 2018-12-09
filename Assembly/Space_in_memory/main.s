@@ -1,0 +1,25 @@
+	AREA mycode,CODE,READONLY
+	ENTRY
+	EXPORT __main
+__main
+	LDR R0,=A
+	MOV R1,#3
+	STR R1,[R0]
+	
+	LDR R0,=B
+	MOV R1,#8
+	STR R1,[R0]
+	
+	LDR R0,=C
+	MOV R1,#6
+	STR R1,[R0]
+	
+	
+STOP B STOP
+
+	AREA data,DATA,READWRITE
+A SPACE 4
+B SPACE 4
+C SPACE 4
+	
+	END

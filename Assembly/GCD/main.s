@@ -1,0 +1,14 @@
+		AREA mycode,CODE,READONLY
+		ENTRY
+		EXPORT __main
+__main
+		MOV R0,#23
+		MOV R1,#5
+		
+gcd		CMP R0,R1
+		IT GT
+		SUBGT R0,R0,R1
+		SUBLT R1,R1,R0
+		BNE gcd
+STOP    B STOP
+		END
